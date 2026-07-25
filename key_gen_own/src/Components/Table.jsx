@@ -33,10 +33,11 @@ const Table = ({ active, machines , page }) => {
               <tr>
                 <th>S.No</th>
                 <th>Date</th>
-                <th>Machine Name</th>
+                <th>Name</th>
                 <th>Extension</th>
-                <th>Mask Number</th>
-                <th>Target Drive</th>
+                <th>MaskNumber</th>
+                <th>TargetDrive</th>
+                <th>Storage</th>
                 <th>Key</th>
                 <th>Actions</th>
               </tr>
@@ -61,6 +62,7 @@ const Table = ({ active, machines , page }) => {
                     </td>
                     <td>{machine.maskid}</td>
                     <td>{machine.TargetDrive}</td>
+                      <td>{machine.AvailedStorage}</td>
                     <td className="flex gap-1">
                       {enCodeText(
                         machine.cipher,
@@ -107,7 +109,7 @@ const Table = ({ active, machines , page }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={8} className="text-center py-5 text-gray-800">
+                  <td colSpan={9} className="text-center py-5 text-gray-800">
                     No Data Found
                   </td>
                 </tr>

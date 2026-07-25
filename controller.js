@@ -26,6 +26,31 @@ export const SaveEncryptedMachineDetails = async (req, res) => {
 
     console.log(req.body);
 
+
+    //Check already the maskid and status
+
+
+const alreadyPresent = await encryptedMachinesModel.findOne({
+  maskid: maskid,
+  status: "active"
+});
+
+if (alreadyPresent) {
+  const data = await encryptedMachinesModel.findOneAndUpdate(
+    { _id: alreadyPresent._id },
+    {
+      $set: {
+        SuccessCount,
+      SkipCount,
+      message, 
+      }
+    },
+    { new: true } // returns the updated document
+  );
+
+  console.log(data);
+}
+
     const data = {
       ...req.body,
       cipher: "ASK06^84%56*#",

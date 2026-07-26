@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaCopy } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
+import { BsBookmarkCheckFill } from "react-icons/bs";
+
 import toast from "react-hot-toast";
 
 const Table = ({ active, machines, page }) => {
@@ -72,12 +74,24 @@ const Table = ({ active, machines, page }) => {
                             machine.cipher,
                             machine.maskid,
                             machine.uuid,
-                          ).substring(0, 9)}
-                      ..
+                          ).substring(0, 9))}..
+                    
                     </td>
 
                     <td>
-                      {" "}
+                {machine.TargetExtension == "NA" ?  
+                (<div
+                          className="tooltip tooltip-start tooltip-primary md:tooltip-right md:tooltip-center"
+                          data-tip="Ignore"
+                        >
+                          <button
+                            
+                            className="text-green-600 text-lg cursor-pointer"
+                          >
+                            <BsBookmarkCheckFill />
+                          </button>
+                        </div>)
+                :
                       <div className="flex ">
                         <div
                           className="tooltip tooltip-start tooltip-primary md:tooltip-right md:tooltip-center"
@@ -108,6 +122,7 @@ const Table = ({ active, machines, page }) => {
                           </button>
                         </div> */}
                       </div>
+                      }
                     </td>
                     <td>{machine.message}</td>
                   </tr>

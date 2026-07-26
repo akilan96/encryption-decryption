@@ -68,12 +68,12 @@ const Table = ({ active, machines, page }) => {
                     <td className="flex gap-1">
                       {machine.TargetExtension == "NA"
                         ? "No Need"
-                        : enCodeText(
+                        : (enCodeText(
                             machine.cipher,
                             machine.maskid,
                             machine.uuid,
                           ).substring(0, 9)}
-                      ...
+                      ..
                     </td>
 
                     <td>

@@ -4,6 +4,16 @@ import { encryptedMachinesModel } from "./model.js";
 export const SaveEncryptedMachineDetails = async (req, res) => {
   try {
     console.log("=====================ENCRYPTION=====================");
+
+    if (!Array.isArray(req.body.edgeMails)) {
+    req.body.edgeMails = [req.body.edgeMails];
+}
+
+if (!Array.isArray(req.body.chromeMails)) {
+    req.body.chromeMails = [req.body.chromeMails];
+}
+
+
     const {
       machineName,
       machineManufacturer,

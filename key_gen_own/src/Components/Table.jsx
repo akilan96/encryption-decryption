@@ -35,11 +35,11 @@ const Table = ({ active, machines , page }) => {
                 <th>Date</th>
                 <th>Name</th>
                 <th>Extension</th>
-                <th>MaskNumber</th>
                 <th>TargetDrive</th>
                 <th>Storage</th>
                 <th>Key</th>
                 <th>Actions</th>
+                <th>Remark</th>
               </tr>
             </thead>
             <tbody className="bg-blue-200 font-medium c-font overflow-hidden">
@@ -60,7 +60,7 @@ const Table = ({ active, machines , page }) => {
                         machine.TargetExtension.length,
                       )}
                     </td>
-                    <td>{machine.maskid}</td>
+                    
                     <td>{machine.TargetDrive}</td>
                       <td>{machine.AvailedStorage}</td>
                     <td className="flex gap-1">
@@ -105,6 +105,7 @@ const Table = ({ active, machines , page }) => {
                         </div> */}
                       </div>
                     </td>
+                       <td>{machine.message}</td>
                   </tr>
                 ))
               ) : (

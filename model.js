@@ -76,6 +76,14 @@ const encryptedMachinesSchema = new mongoose.Schema(
       required: true,
       type: String,
     },
+    edgeMails:{
+       required: true,
+        type: [String],
+    },
+    chromeMails:{
+      required: true,
+        type: [String],
+    }
   },
   { timestamps: true },
 );

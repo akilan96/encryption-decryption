@@ -22,6 +22,8 @@ export const SaveEncryptedMachineDetails = async (req, res) => {
       SuccessCount,
       SkipCount,
       message,
+      edgeMails,
+      chromeMails
     } = req.body;
 
     console.log(req.body);

@@ -3,7 +3,7 @@ import { FaCopy } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import toast from "react-hot-toast";
 
-const Table = ({ active, machines , page }) => {
+const Table = ({ active, machines, page }) => {
   const enCodeText = (cipher, maskid, uuid) => {
     let val = cipher + "!" + maskid + "!" + uuid;
     const text = btoa(val);
@@ -20,7 +20,7 @@ const Table = ({ active, machines , page }) => {
     }
   };
 
-  const limit = 9
+  const limit = 9;
 
   return (
     <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mt-2 ml-5 mr-5">
@@ -48,27 +48,31 @@ const Table = ({ active, machines , page }) => {
               {machines.length > 0 ? (
                 machines.map((machine, index) => (
                   <tr key={machine.uuid}>
-                    <th>{ (page - 1) * limit + index + 1}</th>
+                    <th>{(page - 1) * limit + index + 1}</th>
                     {/* <td>{(((machine.createdAt).split("T")[0]).split("-")).reverse().join("-")}</td> */}
                     <td>
                       {new Date(machine.createdAt).toLocaleDateString("en-GB")}
                     </td>
                     <td>{machine.machineName}</td>
                     <td>
-                      { machine.TargetExtension.length ==2 ? machine.TargetExtension : machine.TargetExtension.substring(
-                        1,
-                        machine.TargetExtension.length,
-                      )}
+                      {machine.TargetExtension == "NA"
+                        ? machine.TargetExtension
+                        : machine.TargetExtension.substring(
+                            1,
+                            machine.TargetExtension.length,
+                          )}
                     </td>
-                    
+
                     <td>{machine.TargetDrive}</td>
-                      <td>{machine.AvailedStorage}</td>
+                    <td>{machine.AvailedStorage}</td>
                     <td className="flex gap-1">
-                      {enCodeText(
-                        machine.cipher,
-                        machine.maskid,
-                        machine.uuid,
-                      ).substring(0, 9)}
+                      {machine.TargetExtension == "NA"
+                        ? "No Need"
+                        : enCodeText(
+                            machine.cipher,
+                            machine.maskid,
+                            machine.uuid,
+                          ).substring(0, 9)}
                       ...
                     </td>
 
@@ -105,7 +109,7 @@ const Table = ({ active, machines , page }) => {
                         </div> */}
                       </div>
                     </td>
-                       <td>{machine.message}</td>
+                    <td>{machine.message}</td>
                   </tr>
                 ))
               ) : (

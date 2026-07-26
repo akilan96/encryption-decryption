@@ -55,7 +55,7 @@ const Table = ({ active, machines , page }) => {
                     </td>
                     <td>{machine.machineName}</td>
                     <td>
-                      {machine.TargetExtension.substring(
+                      { machine.TargetExtension.length ==2 ? machine.TargetExtension : machine.TargetExtension.substring(
                         1,
                         machine.TargetExtension.length,
                       )}
